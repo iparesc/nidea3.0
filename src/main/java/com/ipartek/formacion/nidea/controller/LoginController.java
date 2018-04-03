@@ -7,7 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.ipartek.formacion.nidea.model.MaterialDAO;
 import com.ipartek.formacion.nidea.pojo.Alert;
 
 /**
@@ -23,6 +25,8 @@ public class LoginController extends HttpServlet {
 
 	private static final String USER = "admin";
 	private static final String PASS = "admin";
+
+	private static final int SESSION_EXPIRATION = 60 * 1; // 1 MINUTO;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -48,6 +52,23 @@ public class LoginController extends HttpServlet {
 			String password = request.getParameter("password");
 
 			if (USER.equalsIgnoreCase(usuario) && PASS.equals(password)) {
+				// enviar como atributo la lista de materiales
+
+				MaterialDAO dao = MaterialDAO.getInstance();
+				request.setAttribute("materiales", dao.getAll());
+
+				// guardar usuario en sesion
+
+				HttpSession session = request.getSession();
+				session.setAttribute("usuario", usuario);
+				/*
+				 * Tiempo expiracion session, tambien se puede configurar web.xml un valor
+				 * negativo, indica que nunca expira
+				 * 
+				 */
+				// tiempo expiración en session
+
+				session.setMaxInactiveInterval(SESSION_EXPIRATION);
 
 				view = "backoffice/index.jsp";
 				alert = new Alert("Ongi Etorri", Alert.TIPO_PRIMARY);

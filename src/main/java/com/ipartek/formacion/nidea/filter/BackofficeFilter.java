@@ -55,7 +55,7 @@ public class BackofficeFilter implements Filter {
 		System.out.println("PORT=" + req.getRemotePort());
 		System.out.println("URI=" + req.getRequestURI());
 		System.out.println("URL=" + req.getRequestURL());
-		System.out.println("*****************ENCABEZADOS*******************");
+		System.out.println("*****************ENCABEZADOS***************************");
 		Enumeration<String> headerValues = req.getHeaderNames();
 		String headerName = "";
 		while (headerValues.hasMoreElements()) {

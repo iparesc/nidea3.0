@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ipartek.formacion.nidea.model.MaterialDAO;
 import com.ipartek.formacion.nidea.pojo.Alert;
 
 /**
@@ -53,9 +52,6 @@ public class LoginController extends HttpServlet {
 
 			if (USER.equalsIgnoreCase(usuario) && PASS.equals(password)) {
 				// enviar como atributo la lista de materiales
-
-				MaterialDAO dao = MaterialDAO.getInstance();
-				request.setAttribute("materiales", dao.getAll());
 
 				// guardar usuario en sesion
 

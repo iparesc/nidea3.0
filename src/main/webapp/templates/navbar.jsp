@@ -17,9 +17,9 @@
       
       <c:if test="${!empty usuario}">
       <span class="badge badge_secondary">${usuario}</span>
-      <a class="btn btn-outline-primary" href="/backoffice/materiales">Materiales</a>
+      <a class="btn btn-outline-primary" href="backoffice/materiales">Materiales</a>
       	<a class="btn btn-outline-danger" href="logout">Logout</a>
       </c:if>
     </div>
     
-    <div class="container">s
+    <div class="container">

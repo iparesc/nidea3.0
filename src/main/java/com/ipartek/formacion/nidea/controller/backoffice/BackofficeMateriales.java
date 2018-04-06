@@ -156,13 +156,17 @@ public class BackofficeMateriales extends HttpServlet {
 		ArrayList<Material> materiales = new ArrayList<Material>();
 		materiales = dao.getAll();
 		request.setAttribute("materiales", materiales);
-		dispatcher = request.getRequestDispatcher(VIEW_INDEX);
+		dispatcher = request.getRequestDispatcher(search);
 
 	}
 
 	private void eliminar(HttpServletRequest request) {
 
-		alert = new Alert("MAterial Eliminado id " + id, Alert.TIPO_PRIMARY);
+		if (dao.delete(id)) {
+			alert = new Alert("Material Eliminado id " + id, Alert.TIPO_PRIMARY);
+		} else {
+			alert = new Alert("Error Eliminando, sentimos las molestias ", Alert.TIPO_WARNING);
+		}
 		listar(request);
 
 	}

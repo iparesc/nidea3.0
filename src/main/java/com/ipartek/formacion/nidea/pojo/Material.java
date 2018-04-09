@@ -3,8 +3,8 @@ package com.ipartek.formacion.nidea.pojo;
 public class Material {
 
 	private int id;
-	private String nombre;
-	private float precio;
+	public String nombre;
+	public float precio;
 
 	public Material() {
 		super();
@@ -22,7 +22,7 @@ public class Material {
 	}
 
 	public String getNombre() {
-		return nombre;
+		return nombre.trim();
 	}
 
 	public void setNombre(String nombre) {

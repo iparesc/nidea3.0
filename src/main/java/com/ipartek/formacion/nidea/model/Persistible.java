@@ -1,14 +1,18 @@
 package com.ipartek.formacion.nidea.model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+
+import com.ipartek.formacion.nidea.pojo.Material;
 
 public interface Persistible<P> {
 
 	/**
-	 * Lista de una tabla de la base de datos ordenada por id descendente y limitado
+	 * Lista de una tabla de la base de datos ordenaod por id descentente y limitado
 	 * a 500
 	 * 
-	 * @return
+	 * @return Coleccion
 	 */
 	public ArrayList<P> getAll();
 
@@ -16,14 +20,15 @@ public interface Persistible<P> {
 	 * Obtenemos el detalle de un registro
 	 * 
 	 * @param id
-	 * @return registo si
+	 *            identificador
+	 * @return Registro si existe, null en caso contrario
 	 */
 	public P getById(int id);
 
 	/**
-	 * Guardamos un registro en la base de datos
-	 * 
-	 * si el id del pojo es== -1 creamos si el id del pojo >1 Modificamos
+	 * Guardamos un registro en la BBDD.<br>
+	 * Si el id del Pojo == -1 Creamos <br>
+	 * Si el id del Pojo > 1 Modificamos
 	 * 
 	 * @param pojo
 	 * @return
@@ -31,10 +36,24 @@ public interface Persistible<P> {
 	public boolean save(P pojo);
 
 	/**
-	 * Eliminamos un registro por su identificador
+	 * Eliminamos un resgistro por su identificador
 	 * 
 	 * @param id
 	 * @return
 	 */
 	public boolean delete(int id);
+
+	/**
+	 * Nos Mapea un Resultado de la BBDD a un Pojo
+	 * 
+	 * @param rs
+	 *            ResultSet 1 registro de la consulta
+	 * @return Pojo con los valores del ResultSet o null si no hay valores
+	 * @throws SQLException
+	 * 
+	 */
+	public P mapper(ResultSet rs) throws SQLException;
+
+	ArrayList<Material> getAll(int id);
+
 }

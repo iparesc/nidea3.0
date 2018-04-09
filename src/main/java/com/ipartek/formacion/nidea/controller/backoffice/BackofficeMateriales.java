@@ -137,13 +137,26 @@ public class BackofficeMateriales extends HttpServlet {
 	private void guardar(HttpServletRequest request) {
 
 		Material material = new Material();
-		if (id == -1) {
-			alert = new Alert("Creado Nuevo Material ", Alert.TIPO_PRIMARY);
-			material.setNombre("Nuevo");
+		material.setId(id);
+		material.setNombre(nombre);
+		material.setPrecio(precio);
+
+		if (nombre != "" && precio > 0) {
+
+			if (dao.save(material)) {
+
+				if (material.nombre != null) {
+					alert = new Alert("Material guardado", Alert.TIPO_PRIMARY);
+				}
+
+			} else {
+				alert = new Alert("Lo sentimos pero no hemos podido guardar el material", Alert.TIPO_WARNING);
+			}
 		} else {
-			alert = new Alert("Modificado Material id: " + id, Alert.TIPO_PRIMARY);
-			material.setId(id);
-			material.setNombre("Modificado");
+			alert = new Alert("Necesita meter un nombre y un precio mayor que 0", Alert.TIPO_WARNING);
+		}
+		if (nombre.length() > 45) {
+			alert = new Alert("El nombre debe contener menos de 45 caracteres");
 		}
 
 		request.setAttribute("material", material);
@@ -156,7 +169,7 @@ public class BackofficeMateriales extends HttpServlet {
 		ArrayList<Material> materiales = new ArrayList<Material>();
 		materiales = dao.getAll();
 		request.setAttribute("materiales", materiales);
-		dispatcher = request.getRequestDispatcher(search);
+		dispatcher = request.getRequestDispatcher(VIEW_INDEX);
 
 	}
 
@@ -175,9 +188,7 @@ public class BackofficeMateriales extends HttpServlet {
 
 		Material material = new Material();
 		if (id > -1) {
-			// TODO recuperar de la BBDD que es un material que existe
-			alert = new Alert("Mostramos Detall id:" + id, Alert.TIPO_WARNING);
-			material.setId(id);
+			material = dao.getById(id);
 
 		} else {
 			alert = new Alert("Nuevo Producto", Alert.TIPO_WARNING);

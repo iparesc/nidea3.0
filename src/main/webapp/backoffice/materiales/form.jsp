@@ -47,6 +47,31 @@
 			      <button type="submit" class="btn btn-success btn-lg btn-block">Modificar</button>
 			    </div>
 			    <div class="col-sm-6">			      
+			      <a href="#modalelim" 
+			       class="btn btn-danger btn-lg btn-block">Eliminar</a>
+			    </div>
+			    <div class="modal" tabindex="-1" role="dialog" id="mymodalelim">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="backoffice/materiales?id=${material.id}&op=<%=BackofficeMateriales.OP_ELIMINAR%>" 
+			       class="btn btn-danger btn-lg btn-block">Eliminar</a>
+			    </div>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+			    <div class="col-sm-6">			      
 			      <a href="backoffice/materiales?id=${material.id}&op=<%=BackofficeMateriales.OP_ELIMINAR%>" 
 			       class="btn btn-danger btn-lg btn-block">Eliminar</a>
 			    </div>

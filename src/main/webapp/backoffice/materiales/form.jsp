@@ -47,10 +47,10 @@
 			      <button type="submit" class="btn btn-success btn-lg btn-block">Modificar</button>
 			    </div>
 			    <div class="col-sm-6">			      
-			      <a href="#modalelim" 
+			      <a href="#mymodal" 
 			       class="btn btn-danger btn-lg btn-block">Eliminar</a>
 			    </div>
-			    <div class="modal" tabindex="-1" role="dialog" id="mymodalelim">
+			    <div class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

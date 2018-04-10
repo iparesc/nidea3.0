@@ -45,4 +45,16 @@ public class BebidasDAO implements Persistible<Bebida> {
 		return null;
 	}
 
+	@Override
+	public ArrayList<Material> filtrar(String search) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Bebida> filtrar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

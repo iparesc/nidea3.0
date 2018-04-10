@@ -46,35 +46,33 @@
 			      <input type="hidden" name="op" value="<%=BackofficeMateriales.OP_GUARDAR%>"> 	
 			      <button type="submit" class="btn btn-success btn-lg btn-block">Modificar</button>
 			    </div>
-			    <div class="col-sm-6">			      
-			      <a href="#mymodal" 
-			       class="btn btn-danger btn-lg btn-block">Eliminar</a>
-			    </div>
-			    <div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <a href="backoffice/materiales?id=${material.id}&op=<%=BackofficeMateriales.OP_ELIMINAR%>" 
-			       class="btn btn-danger btn-lg btn-block">Eliminar</a>
-			    </div>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-			    <div class="col-sm-6">			      
-			      <a href="backoffice/materiales?id=${material.id}&op=<%=BackofficeMateriales.OP_ELIMINAR%>" 
-			       class="btn btn-danger btn-lg btn-block">Eliminar</a>
-			    </div>
+			     <div class="col-sm-6">
+			   <button type="button" class="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#eliminar">
+ 					Eliminar
+				</button>
+				</div>
+					<!-- Modal -->
+					<div class="modal fade" id="eliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body">
+					        ¿Desea eliminar el material?
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+					        <a href="backoffice/materiales?id=${material.id}&op=<%=BackofficeMateriales.OP_ELIMINAR%>" 
+			       				class="btn btn-secondary btn-danger">Eliminar</a>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+			  
 			  </div>
 		</c:if>	  
 	</form>

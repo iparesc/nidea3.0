@@ -137,31 +137,42 @@ public class BackofficeMateriales extends HttpServlet {
 	private void guardar(HttpServletRequest request) {
 
 		Material material = new Material();
-		material.setId(id);
-		material.setNombre(nombre);
-		material.setPrecio(precio);
 
-		if (nombre != "" && precio > 0) {
+		try {
+			material.setId(id);
+			material.setNombre(nombre);
+			if (request.getParameter("precio") != null) {
+				precio = Float.parseFloat(request.getParameter("precio"));
+				material.setPrecio(precio);
+			}
 
-			if (dao.save(material)) {
+			if (nombre != "" && precio > 0) {
 
-				if (material.nombre != null) {
-					alert = new Alert("Material guardado", Alert.TIPO_PRIMARY);
+				if (dao.save(material)) {
+
+					if (material.nombre != null) {
+						alert = new Alert("Material guardado", Alert.TIPO_PRIMARY);
+					}
+
+				} else {
+					alert = new Alert("Lo sentimos pero no hemos podido guardar el material", Alert.TIPO_WARNING);
 				}
 
 			} else {
-				alert = new Alert("Lo sentimos pero no hemos podido guardar el material", Alert.TIPO_WARNING);
+				alert = new Alert("Necesita meter un nombre y un precio mayor que 0", Alert.TIPO_WARNING);
 			}
-		} else {
-			alert = new Alert("Necesita meter un nombre y un precio mayor que 0", Alert.TIPO_WARNING);
-		}
-		if (nombre.length() > 45) {
-			alert = new Alert("El nombre debe contener menos de 45 caracteres");
-		}
+			if (nombre.length() > 45) {
+				alert = new Alert("El nombre debe contener menos de 45 caracteres");
+			}
 
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+			alert = new Alert("<b>" + request.getParameter("precio") + "</b> no es un precio correcto",
+					Alert.TIPO_WARNING);
+
+		}
 		request.setAttribute("material", material);
 		dispatcher = request.getRequestDispatcher(VIEW_FORM);
-
 	}
 
 	private void buscar(HttpServletRequest request) {
@@ -231,12 +242,6 @@ public class BackofficeMateriales extends HttpServlet {
 			nombre = request.getParameter("nombre");
 		} else {
 			nombre = "";
-		}
-
-		if (request.getParameter("precio") != null) {
-			precio = Float.parseFloat(request.getParameter("precio"));
-		} else {
-			precio = 0;
 		}
 
 	}

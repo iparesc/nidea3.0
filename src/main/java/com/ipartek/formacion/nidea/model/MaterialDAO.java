@@ -55,6 +55,26 @@ public class MaterialDAO implements Persistible<Material> {
 	}
 
 	@Override
+	public ArrayList<Material> filtrar(String search) {
+		ArrayList<Material> lista = new ArrayList<Material>();
+		String sql = "SELECT `id`, `nombre`, `precio` FROM `material` WHERE `nombre` LIKE '%" + search
+				+ "%' ORDER BY `id` DESC LIMIT 500;";
+		try (Connection con = ConnectionManager.getConnection();
+				PreparedStatement pst = con.prepareStatement(sql);
+				ResultSet rs = pst.executeQuery();) {
+			Material m = null;
+			while (rs.next()) {
+				m = mapper(rs);
+				lista.add(m);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return lista;
+	}
+
+	@Override
 	public Material getById(int id) {
 		Material material = null;
 		String sql = "SELECT `id`, `nombre`, `precio` FROM `material` WHERE `id` = ? ;";
@@ -160,6 +180,12 @@ public class MaterialDAO implements Persistible<Material> {
 
 	@Override
 	public ArrayList<Material> getAll(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Material> filtrar() {
 		// TODO Auto-generated method stub
 		return null;
 	}

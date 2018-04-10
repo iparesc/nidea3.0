@@ -16,6 +16,8 @@ public interface Persistible<P> {
 	 */
 	public ArrayList<P> getAll();
 
+	public ArrayList<P> filtrar();
+
 	/**
 	 * Obtenemos el detalle de un registro
 	 * 
@@ -55,5 +57,7 @@ public interface Persistible<P> {
 	public P mapper(ResultSet rs) throws SQLException;
 
 	ArrayList<Material> getAll(int id);
+
+	ArrayList<Material> filtrar(String search);
 
 }

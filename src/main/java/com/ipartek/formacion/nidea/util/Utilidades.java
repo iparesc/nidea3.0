@@ -1,4 +1,4 @@
-package com.ipartek.formacion.nidea.ejemplos;
+package com.ipartek.formacion.nidea.util;
 
 public class Utilidades {
 
@@ -13,11 +13,26 @@ public class Utilidades {
 	 * @return en caso de null retorna cadena vacia
 	 */
 	public static String limpiarEspacios(String cadena) {
-		String modificado = " hola    que   haxe    ";
-		modificado = modificado.trim();
-		modificado = modificado.replaceAll("\\s", "");
+		String modificado = "";
+		if (cadena != null) {
 
+			modificado = cadena.trim();
+			modificado = modificado.replaceAll("\\s+", " ");
+
+		}
 		return modificado;
 	}
 
+	public static String bebidaCorrecta(String cadena) {
+
+		String resul = "";
+
+		if (cadena.length() > 3 && cadena.length() < 45) {
+
+			resul = cadena.trim();
+		}
+
+		return resul;
+
+	}
 }

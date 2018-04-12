@@ -8,7 +8,8 @@
       <nav class="my-2 my-md-0 mr-md-10">
         <a class="p-2 text-dark" href="generar-mesa">Mesa</a>        
         <a class="p-2 text-dark" href="calculadora"> Calculadora</a>  
-        <a class="p-2 text-dark" href="materiales"> Materiales</a>  
+        <a class="p-2 text-dark" href="materiales"> Materiales</a>
+        <a class="p-2 text-dark" href="login2">Login User</a>  
       </nav>
 
       <c:if test="${empty usuario}">

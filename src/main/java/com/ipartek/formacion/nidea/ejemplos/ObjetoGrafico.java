@@ -1,20 +1,17 @@
 package com.ipartek.formacion.nidea.ejemplos;
 
-public abstract class ObjetoGrafico implements Imprimible {
+import java.io.Serializable;
 
-	int x, y;
+public abstract class ObjetoGrafico implements Imprimible, Cloneable, Serializable {
 
-	public ObjetoGrafico() {
-		super();
-		System.out.println("Creo el padre");
+	private int x;
+	private int y;
+
+	public void mover(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 
-	public abstract void dibujar();
-
-	{
-
-		System.out.println("Creo el metodo abstractos para los hijos");
-
-	}
+	abstract void dibujar();
 
 }

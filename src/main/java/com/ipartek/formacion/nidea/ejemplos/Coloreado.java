@@ -8,8 +8,9 @@ final class Coloreado extends Circulo {
 	}
 
 	@Override
-	public void colorear() {
-		System.out.println("Coloreamos el circulo");
+	public int getValor() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

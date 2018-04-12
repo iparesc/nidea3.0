@@ -11,8 +11,8 @@ public class Perro implements Ordenable {
 	}
 
 	@Override
-	public int getValue() {
-
+	public int getValor() {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 

@@ -7,6 +7,13 @@
 	// varias sentencias 
 	String nombre = "pepe";
 	String hora = "10:78";
+	
+	//Lanza adrede un NullPointerException y nos mostrara una pagina error
+	
+	String nulo=null;
+	nulo.length();
+	
+	
 
 %>
 

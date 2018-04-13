@@ -9,9 +9,9 @@
         <a class="p-2 text-dark" href="generar-mesa">Mesa</a>        
         <a class="p-2 text-dark" href="calculadora"> Calculadora</a>  
         <a class="p-2 text-dark" href="materiales"> Materiales</a>
-        <a class="p-2 text-dark" href="login2">Login User</a>  
+         
       </nav>
-
+	<a class="btn btn-outline-primary" href="loginUsuario.jsp">Login Usuario</a>
       <c:if test="${empty usuario}">
      	 <a class="btn btn-outline-primary" href="login">Login</a>
       </c:if>

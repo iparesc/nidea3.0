@@ -4,6 +4,9 @@ public class Usuario {
 	private int id;
 	private String nombre;
 
+	private String password;
+	private int id_rol;
+
 	public Usuario() {
 		super();
 		this.id = -1;

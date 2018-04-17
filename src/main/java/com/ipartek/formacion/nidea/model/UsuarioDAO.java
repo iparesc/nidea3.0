@@ -109,4 +109,8 @@ public class UsuarioDAO implements Persistible<Usuario> {
 		return null;
 	}
 
+	public Usuario check(String nombre, String password) {
+		return null;
+	}
+
 }
